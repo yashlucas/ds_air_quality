@@ -1,22 +1,27 @@
 # Air Quality Classification Project
 
-Predicting the Air Quality as good, moderate and poor from Gijón, Spain.
+Predicting air quality classes (Good, Moderate, Poor) using environmental and pollutant measurements from Gijón, Spain.
 
-This project focuses on analyzing air quality data and building a machine learning model to classify air quality levels based on environmental and pollutant measurements. The project follows structured data stewardship principles to ensure reproducibility, traceability, metadata management, and clarity.
+This project focuses on analyzing air quality data and building machine learning models to classify air quality levels based on environmental and pollutant measurements. The project follows structured data stewardship principles to ensure reproducibility, traceability, metadata management, FAIR compliance, and clarity.
 
 ---
 
 # Version
 
-## v1.5 (Complete till T2.5)
+## v1.6 (Complete till T2.6)
 
 - Structured repository (`data`, `src`, `outputs`, `models`, `configs`, `docs`)
-- Implemented full ML pipeline in notebook
+- Implemented complete ML workflow
 - Added naming conventions (`inp_`, `outp_`, `model_`, `src_`, `config_`)
-- Generated outputs and saved trained model
-- Added `requirements.txt` for reproducibility
-- Implemented normalized DBRepo schema
+- Generated visual outputs and trained models
+- Added reproducibility support through `requirements.txt`
+- Implemented normalized DBRepo schema in 3NF
 - Added SQL view definitions and DBRepo integration
+- Implemented DBRepo REST API reimplementation workflow
+- Added API-only experiment notebook (`src_air_quality_api_experiment_v1.ipynb`)
+- Removed dependency on local CSV loading in API workflow
+- Added robust API retrieval and error handling
+- Reconstructed normalized joins through pandas merges after API retrieval
 
 ---
 
@@ -29,6 +34,7 @@ The goal of this project is to:
 - Train machine learning models to predict air quality classes
 - Organize all artifacts in a reproducible and well-documented manner
 - Implement normalized database stewardship workflows using DBRepo
+- Reimplement the experiment pipeline using the DBRepo REST API
 
 ---
 
@@ -52,23 +58,23 @@ ds_air_quality/
 
 # Directory Description
 
-- `data/`  
-  Contains all input datasets used in the project, including raw and processed data.
+- `data/`
+  Contains all input datasets used in the project, including raw and processed datasets.
 
-- `src/`  
-  Contains source code such as Jupyter notebooks and Python scripts used for preprocessing, training, evaluation, and DBRepo stewardship workflows.
+- `src/`
+  Contains Jupyter notebooks and source code for preprocessing, machine learning, DBRepo stewardship, and API-based experimentation workflows.
 
-- `outputs/`  
-  Stores generated outputs such as plots, figures, and evaluation results.
+- `outputs/`
+  Stores generated figures, evaluation plots, and analytical outputs.
 
-- `models/`  
-  Stores trained machine learning models for reuse and deployment.
+- `models/`
+  Stores trained machine learning models.
 
-- `configs/`  
-  Contains configuration files (e.g., YAML or JSON) for experiment and pipeline settings.
+- `configs/`
+  Stores configuration files for reproducibility and experimentation.
 
-- `docs/`  
-  Contains documentation, SQL definitions, and supporting materials.
+- `docs/`
+  Stores SQL definitions, ER diagrams, and additional stewardship documentation.
 
 ---
 
@@ -81,16 +87,21 @@ data/
 
 src/
 ├── src_air_quality_experiment.ipynb
+├── src_air_quality_api_experiment_v1.ipynb
 ├── src_dbrepo_setup_v1.ipynb
 └── src_dbrepo_views_v1.ipynb
 
 models/
-└── model_randomforest_v1.pkl
+├── model_randomforest_v1.pkl
+└── model_randomforest_api_v1.pkl
 
 outputs/
 ├── outp_confusion_matrix_v1.png
 ├── outp_model_comparison_v1.png
-└── outp_pm25_histogram_v1.png
+├── outp_pm25_histogram_v1.png
+├── outp_confusion_matrix_api_v1.png
+├── outp_model_comparison_api_v1.png
+└── outp_pm25_histogram_api_v1.png
 
 docs/
 ├── schema.sql
@@ -103,16 +114,19 @@ docs/
 # DBRepo Stewardship Notebooks
 
 - `src_dbrepo_setup_v1.ipynb`
-  - Creates normalized DBRepo schema and database structures.
+  Creates the normalized DBRepo schema and uploads the datasets.
 
 - `src_dbrepo_views_v1.ipynb`
-  - Creates and validates ML-ready database views in DBRepo.
+  Creates and validates analytical and ML-ready DBRepo views.
+
+- `src_air_quality_api_experiment_v1.ipynb`
+  Reimplements the experiment workflow entirely through DBRepo REST API retrieval.
 
 ---
 
 # Naming Convention
 
-To ensure consistency, traceability, and reproducibility, the following naming rules are applied:
+To ensure consistency, traceability, and reproducibility, the following naming conventions are applied.
 
 ## Input datasets
 
@@ -157,7 +171,7 @@ git clone <repository_link>
 cd ds_air_quality
 ```
 
-## 2. Create a virtual environment (recommended)
+## 2. Create a virtual environment
 
 ```bash
 python3 -m venv venv
@@ -174,17 +188,27 @@ pip install -r requirements.txt
 
 # How to Run
 
-Navigate to the source directory and start Jupyter Notebook:
+Navigate to the source directory and launch Jupyter Notebook.
 
 ```bash
 cd src
 jupyter notebook
 ```
 
-Open and run:
+## Original Local-File Workflow
+
+Run:
 
 ```text
 src_air_quality_experiment.ipynb
+```
+
+## DBRepo API-Based Workflow
+
+Run:
+
+```text
+src_air_quality_api_experiment_v1.ipynb
 ```
 
 ---
@@ -194,24 +218,33 @@ src_air_quality_experiment.ipynb
 The workflow includes:
 
 - Data loading and preprocessing
-- Column renaming and standardization
+- Data normalization and stewardship integration
 - Target variable creation based on PM2.5
-- Feature selection and cleaning
+- Feature engineering and cleaning
 - Train-validation-test split
 - Feature scaling
-- Model training (Logistic Regression, Decision Tree, Random Forest)
+- Model training
 - Model evaluation and comparison
-- Model saving
+- Visualization generation
+- Model persistence and reproducibility
+
+Implemented machine learning models:
+
+- Logistic Regression
+- Decision Tree
+- Random Forest
 
 ---
 
 # Target Variable
 
-The target variable `Air_Quality_Class` is derived from PM2.5 values:
+The target variable `Air_Quality_Class` is derived from PM2.5 values.
 
-- PM2.5 < 20 → Good
-- 20 ≤ PM2.5 < 50 → Moderate
-- PM2.5 ≥ 50 → Poor
+| PM2.5 Range | Class |
+|---|---|
+| PM2.5 < 20 | Good |
+| 20 ≤ PM2.5 < 50 | Moderate |
+| PM2.5 ≥ 50 | Poor |
 
 ---
 
@@ -219,58 +252,65 @@ The target variable `Air_Quality_Class` is derived from PM2.5 values:
 
 ## Data Leakage Prevention
 
-PM2.5 is excluded from model features since it is directly used to derive the target variable.
-- Persistent identifiers (DOIs) were created through DBRepo to support FAIR data stewardship principles.
+PM2.5 is excluded from model features because it directly determines the target variable.
 
 ## Reproducibility
 
-The project uses:
+The project supports reproducibility through:
+
 - fixed random states,
 - versioned datasets,
-- pinned Python dependencies,
-- structured repository organization.
+- pinned dependencies,
+- structured repository organization,
+- DBRepo integration,
+- API-based data retrieval.
 
 ## Traceability
 
-Clear naming conventions and structured directories are used to distinguish between:
-- inputs,
-- outputs,
+The repository uses clear separation between:
+
+- raw inputs,
+- processed datasets,
 - models,
 - SQL definitions,
-- stewardship notebooks.
+- stewardship notebooks,
+- outputs,
+- API-based workflows.
 
-## Metadata and Documentation
+## Metadata and FAIR Stewardship
 
-The project documents:
-- schema definitions,
-- SQL view definitions,
-- stewardship workflows,
-- normalized database structures.
+The project integrates metadata management through DBRepo, including:
+
+- persistent identifiers,
+- licensing metadata,
+- dataset descriptions,
+- normalized schema documentation.
 
 ---
 
 # Database and DBRepo Integration
 
-The project implements a normalized relational schema in DBRepo to support reproducible data stewardship workflows and analytical processing.
+The project implements a normalized relational database schema in DBRepo to support reproducible data stewardship and analytical processing.
 
 ## Persistent Identifier (DOI)
 
-The DBRepo database was assigned a persistent DOI identifier for reproducibility and stewardship purposes.
+The DBRepo database was assigned a persistent DOI:
 
 ```text
-DOI: 10.82556/0h29-hr36
+10.82556/0h29-hr36
 ```
 
-### Metadata Registered
+## Metadata Registered
 
-The identifier includes:
+The registered metadata includes:
+
 - dataset title,
 - creator information,
 - abstract description,
 - publication year,
 - licensing metadata.
 
-### License
+## License
 
 The dataset metadata was registered under:
 
@@ -279,104 +319,189 @@ CC-BY-4.0
 ```
 
 License URL:
+
+```text
 https://creativecommons.org/licenses/by/4.0/
+```
 
-## Implemented Tables
+---
 
-- `t_station`
-  - Stores monitoring station metadata including station identifiers and geographic coordinates.
+# Implemented Tables
 
-- `t_time`
-  - Stores temporal attributes including date and hourly measurements.
+## `t_station`
 
-- `t_measurement`
-  - Stores pollutant and meteorological measurements linked to stations and timestamps through foreign-key style identifiers.
+Stores station metadata including:
 
-## Data Normalization
+- station identifiers,
+- station names,
+- latitude,
+- longitude.
 
-The original raw dataset was transformed into a normalized schema consisting of:
+## `t_time`
+
+Stores temporal metadata including:
+
+- dates,
+- hourly timestamps.
+
+## `t_measurement`
+
+Stores pollutant and meteorological measurements linked to station and time identifiers.
+
+---
+
+# Data Normalization
+
+The raw dataset was transformed into a normalized schema consisting of:
+
 - station dimension table,
 - time dimension table,
 - measurement fact table.
 
-This normalization improves:
-- data consistency,
+The schema follows Third Normal Form (3NF) principles.
+
+Normalization improves:
+
+- consistency,
 - storage efficiency,
 - analytical flexibility,
-- reproducibility of downstream ML workflows.
+- stewardship quality,
+- reproducibility.
 
-## DBRepo Integration
+---
 
-The project integrates with DBRepo using the Python API for:
-- database management,
+# DBRepo Integration
+
+The project integrates with DBRepo through the Python REST API for:
+
+- database creation,
 - schema creation,
-- metadata management,
+- metadata registration,
+- persistent identifier management,
 - table ingestion,
-- view creation,
+- analytical view creation,
 - stewardship documentation.
 
-All datasets were validated and uploaded into DBRepo after preprocessing and missing-value handling.
+All datasets were validated before ingestion.
 
 ---
 
 # SQL Views
 
-SQL view definitions are provided in:
+SQL definitions are stored in:
 
 ```text
 docs/views.sql
 ```
 
-These views expose denormalized and query-ready structures for downstream machine learning and analytical workflows.
+Implemented analytical views include:
 
-## Implemented DBRepo Views
+## `vw_air_quality_features`
 
-### `vw_air_quality_features`
+ML-ready feature view exposing pollutant and meteorological measurements.
 
-A denormalized ML-ready feature table containing:
-- pollutant measurements,
-- meteorological variables,
-- station identifiers,
-- temporal identifiers.
+## `vw_daily_pollution_summary`
 
-### `vw_daily_pollution_summary`
+Daily pollution aggregation supporting:
 
-A pollution monitoring view supporting:
-- temporal trend analysis,
-- forecasting workflows,
-- time-oriented analytical exploration.
+- trend analysis,
+- temporal exploration,
+- forecasting workflows.
 
-### `vw_station_pollution_summary`
+## `vw_station_pollution_summary`
 
-A station-oriented analytical view supporting:
+Station-level analytical aggregation supporting:
+
+- hotspot analysis,
 - spatial comparison,
-- hotspot identification,
-- monitoring station analysis.
+- monitoring station evaluation.
 
-All views were successfully created and validated in DBRepo after ingestion of normalized datasets.
+All views were validated successfully after ingestion.
+
+---
+
+# DBRepo API Reimplementation (T2.6)
+
+The experiment workflow was reimplemented to retrieve datasets exclusively through the DBRepo REST API instead of local CSV files.
+
+## API-Based Experiment Notebook
+
+```text
+src/src_air_quality_api_experiment_v1.ipynb
+```
+
+## API Base URL
+
+```text
+https://test.dbrepo.tuwien.ac.at
+```
+
+## API Retrieval Workflow
+
+The API-based workflow retrieves:
+
+- `vw_air_quality_features`
+- `t_station`
+- `t_time`
+
+through the DBRepo Python REST client.
+
+The normalized datasets are reconstructed into a denormalized ML-ready dataframe using pandas merge operations after API retrieval.
+
+## Authentication
+
+Authentication is performed using DBRepo username/password credentials loaded through environment variables.
+
+## Error Handling
+
+The implementation includes:
+
+- retry logic,
+- connection failure handling,
+- metadata validation,
+- API exception handling.
+
+## Important Technical Note
+
+DBRepo Python client version `1.13.4` exhibited instability during multi-table `QueryDefinition` join operations.
+
+To ensure stability and reproducibility:
+
+- datasets were retrieved independently through the REST API,
+- joins were reconstructed through pandas merge operations.
+
+All data access remains fully API-driven and compliant with T2.6 requirements.
+
+## Result Reproducibility
+
+The API-based implementation reproduces the same analytical workflow as the original local-file experiment while removing dependency on local CSV ingestion.
+
 ---
 
 # Outputs
 
 The project generates:
 
-- Confusion matrix visualization
-- Model comparison plot
-- PM2.5 distribution histogram
+- confusion matrix visualizations,
+- model comparison plots,
+- PM2.5 distribution histograms.
 
-All outputs are stored in the `outputs/` directory.
+Outputs are stored in the `outputs/` directory.
+
+Additional API-based outputs are generated through the DBRepo REST API workflow.
 
 ---
 
-# Model
+# Models
 
-The trained Random Forest model is stored at:
+Stored trained models include:
 
 ```text
 models/model_randomforest_v1.pkl
+models/model_randomforest_api_v1.pkl
 ```
 
-This model can be reused for predictions or integrated into future applications.
+These models can be reused for predictions and downstream applications.
 
 ---
 
@@ -384,39 +509,41 @@ This model can be reused for predictions or integrated into future applications.
 
 The repository follows reproducible data science and stewardship practices through:
 
-- versioned datasets,
 - deterministic preprocessing,
-- structured repository organization,
-- normalized database schema design,
-- documented SQL view definitions,
+- normalized schema design,
+- API-based retrieval,
+- documented SQL definitions,
 - tracked model artifacts,
-- pinned Python dependencies.
+- metadata management,
+- pinned dependencies.
 
 ---
 
 # Repository Updates
 
-This repository will be continuously updated throughout the project lifecycle, including:
-- reimplementation of experiments,
-- metadata improvements,
-- stewardship extensions,
+This repository will continue evolving through:
+
+- metadata extensions,
+- stewardship improvements,
 - model refinements,
-- documentation updates.
+- analytical view extensions,
+- API workflow enhancements.
 
 ---
 
 # Future Work
 
-- Develop a frontend application (e.g., Streamlit or Flask)
-- Implement real-time prediction capabilities
-- Extend DBRepo analytical views with temporal aggregation pipelines
-- Add automated metadata validation and lineage tracking
+- Develop frontend applications using Streamlit or Flask
+- Implement real-time prediction workflows
+- Extend temporal aggregation pipelines
+- Add metadata lineage tracking
+- Improve semantic interoperability mappings
 
 ---
 
 # Authors
 
-Group members (A–D):
+Group Members (A–D):
 
 - A: Chattopadhyay, Sneha, 12450741
 - B: Sharma, Anurkti, 12433727
