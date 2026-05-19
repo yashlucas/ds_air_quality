@@ -89,8 +89,8 @@ src/
 ├── src_air_quality_experiment.ipynb
 ├── src_air_quality_api_experiment_v1.ipynb
 ├── src_dbrepo_setup_v1.ipynb
-└── src_dbrepo_views_v1.ipynb
-└─ src_semantic_mapping_v1.ipynb
+├──  src_dbrepo_views_v1.ipynb
+├──  src_semantic_mapping_v1.ipynb
 
 models/
 ├── model_randomforest_v1.pkl
@@ -124,10 +124,10 @@ docs/
   Reimplements the experiment workflow entirely through DBRepo REST API retrieval.
 
 - `src_semantic_mapping_v1.ipynb`
-  - Maps DBRepo table columns to semantic concepts and unit URIs using registered ontologies such as OM2 and DBpedia, uploads the mappings via the DBRepo REST API, and verifies the resulting FAIR metadata.
+  Maps DBRepo table columns to semantic concepts and unit URIs using registered ontologies such as OM2 and DBpedia, uploads the mappings via the DBRepo REST API, and verifies the resulting FAIR metadata.
 
 - `src_mapping_units_of_measurement`
-  - Maps numeric DBRepo attributes to ontology-based measurement unit concepts using OM2 unit URIs, uploads the unit mappings through the DBRepo REST API, and verifies the resulting FAIR unit metadata.
+  Maps numeric DBRepo attributes to ontology-based measurement unit concepts using OM2 unit URIs, uploads the unit mappings through the DBRepo REST API, and verifies the resulting FAIR unit metadata.
 
 ---
 
