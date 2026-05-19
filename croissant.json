@@ -1,0 +1,487 @@
+{
+  "@context": {
+    "@language": "en",
+    "@vocab": "https://schema.org/",
+    "sc": "https://schema.org/",
+    "cr": "http://mlcommons.org/croissant/",
+    "qudt": "http://qudt.org/vocab/unit/"
+  },
+
+  "@type": "sc:Dataset",
+
+  "name": "Air Quality Dataset",
+
+  "description": "Processed input dataset used for the air quality machine learning experiment.",
+
+  "conformsTo": "http://mlcommons.org/croissant/1.0",
+
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+
+  "url": "https://github.com/yashlucas/ds_air_quality",
+
+  "distribution": [
+    {
+      "@type": "cr:FileObject",
+      "@id": "processed_air_quality_csv",
+      "name": "Processed air quality CSV file",
+      "contentUrl": "data/inp_air_quality_processed_v1.csv",
+      "encodingFormat": "text/csv"
+    }
+  ],
+
+  "recordSet": [
+    {
+      "@type": "cr:RecordSet",
+
+      "@id": "processed_air_quality_records",
+
+      "name": "Processed air quality records",
+
+      "description": "Tabular records containing pollutant, meteorological, station, and temporal measurements.",
+
+      "field": [
+
+        {
+          "@type": "cr:Field",
+          "@id": "processed_air_quality_records/pm25",
+          "name": "pm25",
+          "description": "PM2.5 concentration.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "processed_air_quality_csv"
+            },
+            "extract": {
+              "column": "pm25"
+            }
+          },
+          "unitText": "microgram per cubic metre",
+          "unitCode": "qudt:MicroGM-PER-M3"
+        },
+
+        {
+          "@type": "cr:Field",
+          "@id": "processed_air_quality_records/measurement_id",
+          "name": "measurement_id",
+          "description": "Unique measurement identifier.",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileObject": {
+              "@id": "processed_air_quality_csv"
+            },
+            "extract": {
+              "column": "measurement_id"
+            }
+          }
+        },
+
+        {
+          "@type": "cr:Field",
+          "@id": "processed_air_quality_records/o3",
+          "name": "o3",
+          "description": "Ozone concentration.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "processed_air_quality_csv"
+            },
+            "extract": {
+              "column": "o3"
+            }
+          },
+          "unitText": "microgram per cubic metre",
+          "unitCode": "qudt:MicroGM-PER-M3"
+        },
+
+        {
+          "@type": "cr:Field",
+          "@id": "processed_air_quality_records/humidity",
+          "name": "humidity",
+          "description": "Relative humidity.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "processed_air_quality_csv"
+            },
+            "extract": {
+              "column": "humidity"
+            }
+          },
+          "unitText": "percent",
+          "unitCode": "qudt:PERCENT"
+        },
+
+        {
+          "@type": "cr:Field",
+          "@id": "processed_air_quality_records/solar_radiation",
+          "name": "solar_radiation",
+          "description": "Solar radiation measurement.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "processed_air_quality_csv"
+            },
+            "extract": {
+              "column": "solar_radiation"
+            }
+          },
+          "unitText": "watt per square metre",
+          "unitCode": "qudt:W-PER-M2"
+        },
+
+        {
+          "@type": "cr:Field",
+          "@id": "processed_air_quality_records/time_id",
+          "name": "time_id",
+          "description": "Time identifier.",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileObject": {
+              "@id": "processed_air_quality_csv"
+            },
+            "extract": {
+              "column": "time_id"
+            }
+          }
+        },
+
+        {
+          "@type": "cr:Field",
+          "@id": "processed_air_quality_records/mxil",
+          "name": "mxil",
+          "description": "Xylene concentration.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "processed_air_quality_csv"
+            },
+            "extract": {
+              "column": "mxil"
+            }
+          },
+          "unitText": "microgram per cubic metre",
+          "unitCode": "qudt:MicroGM-PER-M3"
+        },
+
+        {
+          "@type": "cr:Field",
+          "@id": "processed_air_quality_records/wind_speed",
+          "name": "wind_speed",
+          "description": "Wind speed.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "processed_air_quality_csv"
+            },
+            "extract": {
+              "column": "wind_speed"
+            }
+          },
+          "unitText": "metre per second",
+          "unitCode": "qudt:M-PER-SEC"
+        },
+
+        {
+          "@type": "cr:Field",
+          "@id": "processed_air_quality_records/pressure",
+          "name": "pressure",
+          "description": "Atmospheric pressure.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "processed_air_quality_csv"
+            },
+            "extract": {
+              "column": "pressure"
+            }
+          },
+          "unitText": "hectopascal",
+          "unitCode": "qudt:HectoPA"
+        },
+
+        {
+          "@type": "cr:Field",
+          "@id": "processed_air_quality_records/no2",
+          "name": "no2",
+          "description": "Nitrogen dioxide concentration.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "processed_air_quality_csv"
+            },
+            "extract": {
+              "column": "no2"
+            }
+          },
+          "unitText": "microgram per cubic metre",
+          "unitCode": "qudt:MicroGM-PER-M3"
+        },
+
+        {
+          "@type": "cr:Field",
+          "@id": "processed_air_quality_records/ben",
+          "name": "ben",
+          "description": "Benzene concentration.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "processed_air_quality_csv"
+            },
+            "extract": {
+              "column": "ben"
+            }
+          },
+          "unitText": "microgram per cubic metre",
+          "unitCode": "qudt:MicroGM-PER-M3"
+        },
+
+        {
+          "@type": "cr:Field",
+          "@id": "processed_air_quality_records/no",
+          "name": "no",
+          "description": "Nitric oxide concentration.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "processed_air_quality_csv"
+            },
+            "extract": {
+              "column": "no"
+            }
+          },
+          "unitText": "microgram per cubic metre",
+          "unitCode": "qudt:MicroGM-PER-M3"
+        },
+
+        {
+          "@type": "cr:Field",
+          "@id": "processed_air_quality_records/so2",
+          "name": "so2",
+          "description": "Sulfur dioxide concentration.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "processed_air_quality_csv"
+            },
+            "extract": {
+              "column": "so2"
+            }
+          },
+          "unitText": "microgram per cubic metre",
+          "unitCode": "qudt:MicroGM-PER-M3"
+        },
+
+        {
+          "@type": "cr:Field",
+          "@id": "processed_air_quality_records/temperature",
+          "name": "temperature",
+          "description": "Air temperature.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "processed_air_quality_csv"
+            },
+            "extract": {
+              "column": "temperature"
+            }
+          },
+          "unitText": "degree Celsius",
+          "unitCode": "qudt:DEG_C"
+        },
+
+        {
+          "@type": "cr:Field",
+          "@id": "processed_air_quality_records/wind_direction",
+          "name": "wind_direction",
+          "description": "Wind direction.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "processed_air_quality_csv"
+            },
+            "extract": {
+              "column": "wind_direction"
+            }
+          },
+          "unitText": "degree",
+          "unitCode": "qudt:DEG"
+        },
+
+        {
+          "@type": "cr:Field",
+          "@id": "processed_air_quality_records/station_id",
+          "name": "station_id",
+          "description": "Monitoring station identifier.",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileObject": {
+              "@id": "processed_air_quality_csv"
+            },
+            "extract": {
+              "column": "station_id"
+            }
+          }
+        },
+
+        {
+          "@type": "cr:Field",
+          "@id": "processed_air_quality_records/rain",
+          "name": "rain",
+          "description": "Rainfall measurement.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "processed_air_quality_csv"
+            },
+            "extract": {
+              "column": "rain"
+            }
+          },
+          "unitText": "millimetre",
+          "unitCode": "qudt:MilliM"
+        },
+
+        {
+          "@type": "cr:Field",
+          "@id": "processed_air_quality_records/pm10",
+          "name": "pm10",
+          "description": "PM10 concentration.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "processed_air_quality_csv"
+            },
+            "extract": {
+              "column": "pm10"
+            }
+          },
+          "unitText": "microgram per cubic metre",
+          "unitCode": "qudt:MicroGM-PER-M3"
+        },
+
+        {
+          "@type": "cr:Field",
+          "@id": "processed_air_quality_records/tol",
+          "name": "tol",
+          "description": "Toluene concentration.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "processed_air_quality_csv"
+            },
+            "extract": {
+              "column": "tol"
+            }
+          },
+          "unitText": "microgram per cubic metre",
+          "unitCode": "qudt:MicroGM-PER-M3"
+        },
+
+        {
+          "@type": "cr:Field",
+          "@id": "processed_air_quality_records/co",
+          "name": "co",
+          "description": "Carbon monoxide concentration.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "processed_air_quality_csv"
+            },
+            "extract": {
+              "column": "co"
+            }
+          },
+          "unitText": "milligram per cubic metre",
+          "unitCode": "qudt:MilliGM-PER-M3"
+        },
+
+        {
+          "@type": "cr:Field",
+          "@id": "processed_air_quality_records/station_name",
+          "name": "station_name",
+          "description": "Name of the monitoring station.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "processed_air_quality_csv"
+            },
+            "extract": {
+              "column": "station_name"
+            }
+          }
+        },
+
+        {
+          "@type": "cr:Field",
+          "@id": "processed_air_quality_records/latitude",
+          "name": "latitude",
+          "description": "Latitude of the monitoring station.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "processed_air_quality_csv"
+            },
+            "extract": {
+              "column": "latitude"
+            }
+          },
+          "unitText": "degree",
+          "unitCode": "qudt:DEG"
+        },
+
+        {
+          "@type": "cr:Field",
+          "@id": "processed_air_quality_records/longitude",
+          "name": "longitude",
+          "description": "Longitude of the monitoring station.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "processed_air_quality_csv"
+            },
+            "extract": {
+              "column": "longitude"
+            }
+          },
+          "unitText": "degree",
+          "unitCode": "qudt:DEG"
+        },
+
+        {
+          "@type": "cr:Field",
+          "@id": "processed_air_quality_records/date",
+          "name": "date",
+          "description": "Date of measurement.",
+          "dataType": "sc:Date",
+          "source": {
+            "fileObject": {
+              "@id": "processed_air_quality_csv"
+            },
+            "extract": {
+              "column": "date"
+            }
+          }
+        },
+
+        {
+          "@type": "cr:Field",
+          "@id": "processed_air_quality_records/hour",
+          "name": "hour",
+          "description": "Hour of measurement.",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileObject": {
+              "@id": "processed_air_quality_csv"
+            },
+            "extract": {
+              "column": "hour"
+            }
+          },
+          "unitText": "hour",
+          "unitCode": "qudt:HR"
+        }
+
+      ]
+    }
+  ]
+}
