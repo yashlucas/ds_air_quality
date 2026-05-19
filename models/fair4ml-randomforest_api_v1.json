@@ -13,6 +13,9 @@
   "description": "Random Forest classification model trained for air quality prediction using DBRepo API workflows and processed environmental measurements.",
 
   "license": "CC-BY-4.0",
+  
+  "repository_doi": "https://doi.org/10.5281/zenodo.20297890",
+
 
   "model_file": "models/model_randomforest_api_v1.pkl",
 
