@@ -584,18 +584,6 @@ The repository follows reproducible data science and stewardship practices throu
 
 ---
 
-# Repository Updates
-
-This repository will continue evolving through:
-
-- metadata extensions,
-- stewardship improvements,
-- model refinements,
-- analytical view extensions,
-- API workflow enhancements.
-
----
-
 # Future Work
 
 - Develop frontend applications using Streamlit or Flask
