@@ -1,0 +1,35 @@
+cff-version: 1.2.0
+title: "Air Quality FAIR Data Science Experiment"
+message: "If you use this repository, please cite it using the metadata below."
+type: software
+
+authors:
+  - family-names: "Chattopadhyay"
+    given-names: "Sneha"
+    orcid: "https://orcid.org/0009-0000-1849-5804"
+
+  - family-names: "Sharma"
+    given-names: "Anukriti"
+    orcid: "https://orcid.org/0009-0001-2969-8567"
+
+  - family-names: "Lucas"
+    given-names: "Yash"
+    orcid: "https://orcid.org/0009-0000-3575-9517"
+
+  - family-names: "Chowdhury"
+    given-names: "Bikramjit"
+    orcid: "https://orcid.org/0009-0004-0869-709X"
+
+version: "2.0"
+
+doi: "10.5281/zenodo.20297890"
+
+date-released: 2026-05-19
+
+repository-code: "https://github.com/yashlucas/ds_air_quality"
+
+license: "MIT"
+
+abstract: >
+  FAIR data science workflow for air quality prediction using DBRepo,
+  RO-Crate, FAIR4ML, Croissant, and CodeMeta metadata standards.
