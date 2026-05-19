@@ -1,27 +1,34 @@
-# Air Quality Classification Project
+# Air Quality FAIR Data Science Experiment
+
+[![DOI](https://zenodo.org/badge/DOI/PLACEHOLDER.svg)](https://doi.org/PLACEHOLDER)
 
 Predicting air quality classes (Good, Moderate, Poor) using environmental and pollutant measurements from Gijón, Spain.
 
-This project focuses on analyzing air quality data and building machine learning models to classify air quality levels based on environmental and pollutant measurements. The project follows structured data stewardship principles to ensure reproducibility, traceability, metadata management, FAIR compliance, and clarity.
+This project implements a FAIR data science workflow for air quality prediction using machine learning, metadata standards, semantic mappings, and reproducible computational notebooks. The repository integrates DBRepo workflows, RO-Crate metadata, FAIR4ML metadata, Croissant dataset metadata, CodeMeta software metadata, and structured model documentation. The project demonstrates reproducible and interoperable machine learning experimentation using environmental monitoring datasets and Random Forest classification models.
 
 ---
 
 # Version
 
-## v1.6 (Complete till T2.6)
+## v2.0 (Complete till T3.7)
 
-- Structured repository (`data`, `src`, `outputs`, `models`, `configs`, `docs`)
-- Implemented complete ML workflow
-- Added naming conventions (`inp_`, `outp_`, `model_`, `src_`, `config_`)
-- Generated visual outputs and trained models
-- Added reproducibility support through `requirements.txt`
-- Implemented normalized DBRepo schema in 3NF
-- Added SQL view definitions and DBRepo integration
-- Implemented DBRepo REST API reimplementation workflow
-- Added API-only experiment notebook (`src_air_quality_api_experiment_v1.ipynb`)
-- Removed dependency on local CSV loading in API workflow
-- Added robust API retrieval and error handling
-- Reconstructed normalized joins through pandas merges after API retrieval
+- Structured FAIR repository organization
+- Complete machine learning workflow implementation
+- DBRepo normalized schema integration
+- DBRepo REST API-based experiment workflow
+- Semantic ontology mappings
+- Unit ontology mappings
+- FAIR metadata integration:
+  - RO-Crate
+  - CodeMeta
+  - FAIR4ML
+  - Croissant
+  - Model Card
+- Explicit licence separation for:
+  - datasets
+  - software
+  - produced outputs
+- Reproducibility and stewardship documentation
 
 ---
 
@@ -49,6 +56,9 @@ ds_air_quality/
 ├── models/
 ├── configs/
 ├── docs/
+├── croissant.json
+├── codemeta.json
+├── ro-crate-metadata.json
 ├── requirements.txt
 ├── README.md
 └── LICENSE
@@ -74,8 +84,7 @@ ds_air_quality/
   Stores configuration files for reproducibility and experimentation.
 
 - `docs/`
-  Stores SQL definitions, ER diagrams, and additional stewardship documentation.
-
+  Stores SQL definitions, ER diagrams, model documentation, validation outputs, and stewardship documentation.
 ---
 
 # File Organisation
@@ -89,12 +98,14 @@ src/
 ├── src_air_quality_experiment.ipynb
 ├── src_air_quality_api_experiment_v1.ipynb
 ├── src_dbrepo_setup_v1.ipynb
-├──  src_dbrepo_views_v1.ipynb
-├──  src_semantic_mapping_v1.ipynb
+├── src_dbrepo_views_v1.ipynb
+├── src_semantic_mapping_v1.ipynb
+└── src_mapping_units_of_measurement_v1.ipynb
 
 models/
 ├── model_randomforest_v1.pkl
-└── model_randomforest_api_v1.pkl
+├── model_randomforest_api_v1.pkl
+└── fair4ml-randomforest-v1.json
 
 outputs/
 ├── outp_confusion_matrix_v1.png
@@ -107,10 +118,39 @@ outputs/
 docs/
 ├── schema.sql
 ├── views.sql
-└── er_diagram_air_quality_v1.png
+├── er_diagram_air_quality_v1.png
+├── model-card.md
+└── validation/
+    └── ro-crate-validation.txt
+
+configs/
+
+croissant.json
+codemeta.json
+ro-crate-metadata.json
+requirements.txt
+README.md
+LICENSE
 ```
 
 ---
+
+
+# FAIR Metadata Standards
+The repository integrates multiple FAIR metadata standards to improve interoperability, discoverability, provenance tracking, and reproducibility
+| Standard | File |
+|---|---|
+| RO-Crate | `ro-crate-metadata.json` |
+| CodeMeta | `codemeta.json` |
+| FAIR4ML | `models/fair4ml-randomforest-v1.json` |
+| Croissant | `croissant.json` |
+| Model Card | `docs/model-card.md` |
+
+RO-Crate validation output is available in:
+
+```text
+docs/validation/ro-crate-validation.txt
+```
 
 # DBRepo Stewardship Notebooks
 
@@ -124,10 +164,10 @@ docs/
   Reimplements the experiment workflow entirely through DBRepo REST API retrieval.
 
 - `src_semantic_mapping_v1.ipynb`
-  Maps DBRepo table columns to semantic concepts and unit URIs using registered ontologies such as OM2 and DBpedia, uploads the mappings via the DBRepo REST API, and verifies the resulting FAIR metadata.
+  - Maps DBRepo table columns to semantic concepts and unit URIs using registered ontologies such as OM2 and DBpedia, uploads the mappings via the DBRepo REST API, and verifies the resulting FAIR metadata.
 
 - `src_mapping_units_of_measurement`
-  Maps numeric DBRepo attributes to ontology-based measurement unit concepts using OM2 unit URIs, uploads the unit mappings through the DBRepo REST API, and verifies the resulting FAIR unit metadata.
+  - Maps numeric DBRepo attributes to ontology-based measurement unit concepts using OM2 unit URIs, uploads the unit mappings through the DBRepo REST API, and verifies the resulting FAIR unit metadata.
 
 ---
 
@@ -145,6 +185,22 @@ inp_<description>_v<version>.csv
 
 ```text
 outp_<type>_<description>_v<version>.<ext>
+```
+
+## Metadata files
+
+```text
+ro-crate-metadata.json
+codemeta.json
+croissant.json
+fair4ml-<model>-v<version>.json
+```
+
+## Documentation files
+
+```text
+model-card.md
+README.md
 ```
 
 ## Model files
@@ -315,23 +371,15 @@ The registered metadata includes:
 - creator information,
 - abstract description,
 - publication year,
-- licensing metadata.
+- licensing metadata,
+- semantic ontology mappings,
+- unit ontology mappings,
+- SQL view definitions,
+- provenance metadata,
+- FAIR metadata artefacts,
+- reproducibility documentation.
 
-## License
-
-The dataset metadata was registered under:
-
-```text
-CC-BY-4.0
-```
-
-License URL:
-
-```text
-https://creativecommons.org/licenses/by/4.0/
-```
-
----
+The repository additionally integrates FAIR metadata standards including RO-Crate, CodeMeta, FAIR4ML, Croissant, and Model Cards to support interoperability, discoverability, provenance tracking, and reproducibility.
 
 # Implemented Tables
 
@@ -508,9 +556,19 @@ models/model_randomforest_v1.pkl
 models/model_randomforest_api_v1.pkl
 ```
 
-These models can be reused for predictions and downstream applications.
+FAIR4ML metadata describing the trained Random Forest model is stored in:
 
----
+```text
+models/fair4ml-randomforest-v1.json
+```
+
+The model card documentation is stored in:
+
+```text
+docs/model-card.md
+```
+
+These models can be reused for predictions and downstream applications.
 
 # Reproducibility
 
@@ -550,15 +608,39 @@ This repository will continue evolving through:
 
 # Authors
 
-Group Members (A–D):
+# Contributors
 
-- A: Chattopadhyay, Sneha, 12450741
-- B: Sharma, Anurkti, 12433727
-- C: Lucas, Yash, 12433688
-- D: Chowdhury, Bikramjit, 12434671
+| Contributor | ORCID |
+|---|---|
+| Sneha Chattopadhyay | https://orcid.org/0009-0000-1849-5804 |
+| Anukriti Sharma | https://orcid.org/0009-0001-2969-8567 |
+| Yash Lucas | https://orcid.org/0009-0000-3575-9517 |
+| Bikramjit Chowdhury | https://orcid.org/0009-0004-0869-709X |
+
+# Licences
+
+### Input Dataset Licence
+
+The input air quality dataset used in this project is distributed under the Creative Commons Attribution 4.0 International (CC BY 4.0) licence.
+
+https://creativecommons.org/licenses/by/4.0/
+
+This licence permits sharing and adaptation of the dataset provided that appropriate attribution is given to the original data source. The project workflow, processed datasets, and metadata records were developed in accordance with the attribution requirements of the source dataset licence.
+
+### Software and Code Licence
+
+The software components of this repository, including Python notebooks, scripts, SQL files, metadata artefacts, and workflow documentation, are distributed under the MIT License.
+
+The MIT License was selected because it is a widely used permissive open-source software licence that supports reuse, modification, distribution, and reproducibility. The licence is compatible with the CC BY 4.0 dataset licence because it applies specifically to the software implementation rather than to the original input dataset itself.
+
+The full licence text is available in the repository root:
+
+`LICENSE`
+
+### Produced Data and Model Licence
+
+The produced artefacts generated during the experiment, including trained machine learning models, generated figures, evaluation outputs, and metadata records, are distributed under the Creative Commons Attribution 4.0 International (CC BY 4.0) licence.
+
+This licence allows reuse and redistribution of generated outputs provided that attribution is given to the project authors. The selected licence is compatible with the attribution obligations associated with the source dataset licence and supports FAIR and open-science reuse practices.
 
 ---
-
-# License
-
-This project is licensed under the terms specified in the LICENSE file.
