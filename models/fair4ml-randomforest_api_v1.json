@@ -1,0 +1,87 @@
+{
+  "@context": {
+    "schema": "https://schema.org/",
+    "fair4ml": "https://w3id.org/fair4ml/"
+  },
+
+  "@type": "fair4ml:MLModel",
+
+  "name": "Random Forest Air Quality Prediction Model",
+
+  "version": "1.0.0",
+
+  "description": "Random Forest classification model trained for air quality prediction using DBRepo API workflows and processed environmental measurements.",
+
+  "license": "CC-BY-4.0",
+
+  "model_file": "models/model_randomforest_api_v1.pkl",
+
+  "training_workflow": "src/src_air_quality_api_experiment_v1.ipynb",
+
+  "training_dataset": {
+    "name": "Processed Air Quality Dataset",
+    "path": "data/inp_air_quality_processed_v1.csv",
+    "doi": "TO_BE_ADDED_AFTER_DATASET_DEPOSIT"
+  },
+
+  "algorithm": {
+    "name": "RandomForestClassifier",
+    "implementation": "scikit-learn",
+    "version": "1.4.2"
+  },
+
+  "hyperparameters": {
+    "n_estimators": 100,
+    "criterion": "gini",
+    "max_depth": null,
+    "min_samples_split": 2,
+    "min_samples_leaf": 1,
+    "random_state": null
+  },
+"evaluation_metrics": {
+  "accuracy": 0.96,
+  "precision_macro_avg": 0.81,
+  "recall_macro_avg": 0.56,
+  "f1_score_macro_avg": 0.64,
+  "precision_weighted_avg": 0.95,
+  "recall_weighted_avg": 0.96,
+  "f1_score_weighted_avg": 0.95
+},
+
+  "intended_use": "This model is intended for educational and research use within a FAIR data science workflow for air quality prediction experiments.",
+
+  "known_limitations": [
+    "Model performance depends on the completeness and quality of air quality sensor measurements.",
+    "The model may not generalize beyond the geographic and temporal scope of the training dataset.",
+    "The model is not intended for regulatory, medical, or emergency-response applications."
+  ],
+
+  "related_outputs": [
+    "outputs/outp_confusion_matrix_api_v1.png",
+    "outputs/outp_model_comparison_api_v1.png",
+    "outputs/outp_pm25_histogram_api_v1.png"
+  ],
+
+
+  "creators": [
+    {
+      "name": "Sneha Chattopadhyay",
+      "orcid": "https://orcid.org/0009-0000-1849-5804"
+    },
+    {
+      "name": "Anukriti Sharma",
+      "orcid": "https://orcid.org/0009-0001-2969-8567"
+    },
+    {
+      "name": "Yash Lucas",
+      "orcid": "https://orcid.org/0009-0000-3575-9517"
+    },
+    {
+      "name": "Bikramjit Chowdhury",
+      "orcid": "https://orcid.org/0009-0004-0869-709X"
+    }
+  ],
+
+  "tuwrd_model_doi": "https://doi.org/10.70124/gv54r-hph13"
+
+}
