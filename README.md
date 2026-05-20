@@ -592,7 +592,6 @@ The repository follows reproducible data science and stewardship practices throu
 
 # Repository Updates
 
-# Repository Updates
 
 This repository documents the final FAIR data science workflow developed for the project and integrates reproducible machine learning experimentation, DBRepo stewardship workflows, semantic interoperability mappings, and multiple FAIR metadata standards.
 
