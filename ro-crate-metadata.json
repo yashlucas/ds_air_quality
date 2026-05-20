@@ -48,7 +48,10 @@
         { "@id": "LICENSE" }
       ]
     },
+<<<<<<< HEAD
     
+=======
+>>>>>>> 7400e340caf76d677c2712af2e0648113da23e76
     {
       "@id": "LICENSE",
       "@type": "CreativeWork",
@@ -178,7 +181,10 @@
     },
     {
       "@id": "models/model_randomforest_v1.pkl",
+<<<<<<< HEAD
       "identifier": "https://doi.org/10.70124/gv54r-hph13",
+=======
+>>>>>>> 7400e340caf76d677c2712af2e0648113da23e76
       "@type": "File",
       "name": "Random Forest trained model from local workflow",
       "encodingFormat": "application/octet-stream",
@@ -186,7 +192,10 @@
     },
     {
       "@id": "models/model_randomforest_api_v1.pkl",
+<<<<<<< HEAD
       "identifier": "https://doi.org/10.70124/gv54r-hph13",
+=======
+>>>>>>> 7400e340caf76d677c2712af2e0648113da23e76
       "@type": "File",
       "name": "Random Forest trained model from API workflow",
       "encodingFormat": "application/octet-stream",

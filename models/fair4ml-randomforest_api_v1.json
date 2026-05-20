@@ -13,6 +13,12 @@
   "description": "Random Forest classification model trained for air quality prediction using DBRepo API workflows and processed environmental measurements.",
 
   "license": "CC-BY-4.0",
+<<<<<<< HEAD
+=======
+  
+  "repository_doi": "https://doi.org/10.5281/zenodo.20297890",
+
+>>>>>>> 7400e340caf76d677c2712af2e0648113da23e76
 
   "model_file": "models/model_randomforest_api_v1.pkl",
 
@@ -80,8 +86,12 @@
       "name": "Bikramjit Chowdhury",
       "orcid": "https://orcid.org/0009-0004-0869-709X"
     }
+<<<<<<< HEAD
   ],
 
   "tuwrd_model_doi": "https://doi.org/10.70124/gv54r-hph13"
 
+=======
+  ]
+>>>>>>> 7400e340caf76d677c2712af2e0648113da23e76
 }

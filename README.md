@@ -1,6 +1,10 @@
 # Air Quality FAIR Data Science Experiment
 
+<<<<<<< HEAD
 [![DOI](https://zenodo.org/badge/DOI/PLACEHOLDER.svg)](https://doi.org/PLACEHOLDER)
+=======
+[![DOI](https://zenodo.org/badge/1218343777.svg)](https://doi.org/10.5281/zenodo.20297890)
+>>>>>>> 7400e340caf76d677c2712af2e0648113da23e76
 
 Predicting air quality classes (Good, Moderate, Poor) using environmental and pollutant measurements from Gijón, Spain.
 
@@ -584,6 +588,7 @@ The repository follows reproducible data science and stewardship practices throu
 
 ---
 
+<<<<<<< HEAD
 # Repository Updates
 
 This repository will continue evolving through:
@@ -604,6 +609,8 @@ The trained machine learning model artefacts are archived in the TU Wien Researc
 https://doi.org/10.70124/gv54r-hph13
 ```
 
+=======
+>>>>>>> 7400e340caf76d677c2712af2e0648113da23e76
 # Future Work
 
 - Develop frontend applications using Streamlit or Flask

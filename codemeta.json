@@ -5,6 +5,10 @@
   "version": "1.0.0",
   "description": "Python-based FAIR data science experiment for air quality prediction using machine learning and DBRepo workflows.",
   "codeRepository": "https://github.com/yashlucas/ds_air_quality",
+<<<<<<< HEAD
+=======
+  "identifier": "https://doi.org/10.5281/zenodo.20297890",
+>>>>>>> 7400e340caf76d677c2712af2e0648113da23e76
   "license": "MIT",
   "programmingLanguage": "Python",
   "runtimePlatform": "Python 3",
