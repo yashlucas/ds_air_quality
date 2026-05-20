@@ -481,7 +481,7 @@ All views were validated successfully after ingestion.
 
 ---
 
-# DBRepo API Reimplementation (T2.6)
+# DBRepo API Reimplementation 
 
 The experiment workflow was reimplemented to retrieve datasets exclusively through the DBRepo REST API instead of local CSV files.
 
