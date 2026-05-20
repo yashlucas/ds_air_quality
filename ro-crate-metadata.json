@@ -44,6 +44,9 @@
         { "@id": "croissant.json" },
         { "@id": "docs/model-card.md" },
         { "@id": "README.md" },
+        {
+  "@id": "docs/standards-overlap-analysis.md"
+},
         { "@id": "requirements.txt" },
         { "@id": "LICENSE" }
       ]
@@ -242,6 +245,11 @@
       "encodingFormat": "image/png",
       "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" }
     },
+    {
+  "@id": "docs/standards-overlap-analysis.md",
+  "@type": "CreativeWork",
+  "name": "Metadata standards overlap and complementarity analysis"
+},
     {
       "@id": "croissant.json",
       "@type": "File",

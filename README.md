@@ -1,7 +1,7 @@
 # Air Quality FAIR Data Science Experiment
 
 
-[![DOI](https://zenodo.org/badge/DOI/PLACEHOLDER.svg)](https://doi.org/PLACEHOLDER)
+[![DOI](https://zenodo.org/badge/1084013384.svg)](https://doi.org/10.5281/zenodo.20297891)
 
 Predicting air quality classes (Good, Moderate, Poor) using environmental and pollutant measurements from Gijón, Spain.
 
@@ -11,7 +11,7 @@ This project implements a FAIR data science workflow for air quality prediction 
 
 # Version
 
-## v2.0 (Complete till T3.7)
+## v3.0
 
 - Structured FAIR repository organization
 - Complete machine learning workflow implementation
@@ -61,6 +61,7 @@ ds_air_quality/
 ├── codemeta.json
 ├── ro-crate-metadata.json
 ├── requirements.txt
+├── CITATION.cff
 ├── README.md
 └── LICENSE
 ```
@@ -118,6 +119,7 @@ outputs/
 
 docs/
 ├── schema.sql
+├── standards-overlap-analysis.md
 ├── views.sql
 ├── er_diagram_air_quality_v1.png
 ├── model-card.md
@@ -127,6 +129,7 @@ docs/
 configs/
 
 croissant.json
+CITATION.cff
 codemeta.json
 ro-crate-metadata.json
 requirements.txt
@@ -138,10 +141,12 @@ LICENSE
 
 
 # FAIR Metadata Standards
+
 The repository integrates multiple FAIR metadata standards to improve interoperability, discoverability, provenance tracking, and reproducibility
 | Standard | File |
 |---|---|
 | RO-Crate | `ro-crate-metadata.json` |
+| Standards Overlap Analysis | `docs/standards-overlap-analysis.md`|
 | CodeMeta | `codemeta.json` |
 | FAIR4ML | `models/fair4ml-randomforest-v1.json` |
 | Croissant | `croissant.json` |
@@ -585,18 +590,22 @@ The repository follows reproducible data science and stewardship practices throu
 
 ---
 
-<<<<<<< HEAD
 # Repository Updates
 
-This repository will continue evolving through:
+# Repository Updates
 
-- metadata extensions,
-- stewardship improvements,
-- model refinements,
-- analytical view extensions,
-- API workflow enhancements.
+This repository documents the final FAIR data science workflow developed for the project and integrates reproducible machine learning experimentation, DBRepo stewardship workflows, semantic interoperability mappings, and multiple FAIR metadata standards.
 
----
+The repository currently includes:
+
+- FAIR metadata integration through RO-Crate, CodeMeta, FAIR4ML, Croissant, and Model Cards,
+- DOI-linked archival deposits for software, models, and generated outputs,
+- reproducible DBRepo REST API-based workflows,
+- semantic ontology mappings for environmental variables and measurement units,
+- structured provenance and stewardship documentation,
+- machine learning evaluation outputs and trained models,
+- interoperability-focused metadata records and FAIR documentation.
+
 
 # Model Deposit DOI
 
@@ -605,9 +614,13 @@ The trained machine learning model artefacts are archived in the TU Wien Researc
 ```text
 https://doi.org/10.70124/gv54r-hph13
 ```
+# Generated Output Data Deposit DOI
 
-=======
->>>>>>> 7400e340caf76d677c2712af2e0648113da23e76
+The generated datasets, processed outputs, classification results, and evaluation figures are archived in the TU Wien Research Data Repository.
+
+```text
+https://doi.org/10.70124/3rp20-vpc28
+```
 # Future Work
 
 - Develop frontend applications using Streamlit or Flask
