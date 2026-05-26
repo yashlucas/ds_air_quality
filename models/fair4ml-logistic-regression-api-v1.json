@@ -1,0 +1,60 @@
+{
+  "@context": {
+    "schema": "https://schema.org/",
+    "fair4ml": "https://w3id.org/fair4ml/"
+  },
+  "@type": "fair4ml:MLModel",
+  "name": "Logistic Regression Air Quality Prediction Model",
+  "version": "1.0.0",
+  "description": "Logistic Regression classification model evaluated for air quality prediction using DBRepo API workflows and processed environmental measurements.",
+  "license": "CC-BY-4.0",
+  "training_workflow": "src/src_air_quality_api_experiment_v1.ipynb",
+  "training_dataset": {
+    "name": "Processed Air Quality Dataset",
+    "path": "data/inp_air_quality_processed_v1.csv",
+    "doi": "https://doi.org/10.70124/3rp20-vpc28"
+  },
+  "algorithm": {
+    "name": "LogisticRegression",
+    "implementation": "scikit-learn",
+    "version": "1.4.2"
+  },
+  "hyperparameters": {
+    "max_iter": 10000,
+    "solver": "lbfgs",
+    "random_state": null
+  },
+  "evaluation_metrics": {
+    "accuracy": 0.9505327245053272,
+    "precision_macro_avg": "not_reported_in_notebook",
+    "recall_macro_avg": "not_reported_in_notebook",
+    "f1_score_macro_avg": "not_reported_in_notebook"
+  },
+  "intended_use": "This model is intended for educational and research use within a FAIR data science workflow for air quality prediction experiments.",
+  "known_limitations": [
+    "The model may underperform on imbalanced air quality classes.",
+    "Only accuracy was reported for this model in the notebook.",
+    "The model is not intended for regulatory, medical, or emergency-response applications."
+  ],
+  "creators": [
+    {
+      "name": "Sneha Chattopadhyay",
+      "orcid": "https://orcid.org/0009-0000-1849-5804"
+    },
+    {
+      "name": "Anukriti Sharma",
+      "orcid": "https://orcid.org/0009-0001-2969-8567"
+    },
+    {
+      "name": "Yash Lucas",
+      "orcid": "https://orcid.org/0009-0000-3575-9517"
+    },
+    {
+      "name": "Bikramjit Chowdhury",
+      "orcid": "https://orcid.org/0009-0004-0869-709X"
+    }
+  ],
+  "repository_doi": "https://doi.org/10.5281/zenodo.20297891",
+  "tuwrd_model_doi": "https://doi.org/10.70124/gv54r-hph13",
+  "generated_data_doi": "https://doi.org/10.70124/3rp20-vpc28"
+}
