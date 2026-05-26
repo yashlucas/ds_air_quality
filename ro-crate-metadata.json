@@ -7,24 +7,36 @@
       "about": { "@id": "./" },
       "conformsTo": { "@id": "https://w3id.org/ro/crate/1.1" }
     },
+
     {
       "@id": "./",
       "@type": "Dataset",
+      "identifier": "https://doi.org/10.5281/zenodo.20297891",
       "name": "Air Quality FAIR Data Science Experiment",
-      "description": "FAIR data science experiment for air quality prediction using DBRepo workflows, semantic mappings, trained Random Forest models, and generated evaluation outputs.",
+      "description": "FAIR data science experiment for air quality prediction using DBRepo workflows, semantic ontology mappings, multiple machine learning classification models, FAIR metadata standards, and reproducible evaluation outputs.",
       "license": { "@id": "LICENSE" },
+
+      "sameAs": [
+        "https://doi.org/10.70124/gv54r-hph13",
+        "https://doi.org/10.70124/3rp20-vpc28",
+        "https://doi.org/10.82556/0h29-hr36"
+      ],
+
       "author": [
         { "@id": "#author-a" },
         { "@id": "#author-b" },
         { "@id": "#author-c" },
         { "@id": "#author-d" }
       ],
+
       "hasPart": [
         { "@id": "data/inp_air_quality_raw_v1.csv" },
         { "@id": "data/inp_air_quality_processed_v1.csv" },
+
         { "@id": "docs/schema.sql" },
         { "@id": "docs/views.sql" },
         { "@id": "docs/er_diagram_air_quality_v1.png" },
+
         { "@id": "src/src_air_quality_experiment.ipynb" },
         { "@id": "src/src_air_quality_api_experiment_v1.ipynb" },
         { "@id": "src/src_dbrepo_load_v1.ipynb" },
@@ -32,47 +44,82 @@
         { "@id": "src/src_dbrepo_views_v1.ipynb" },
         { "@id": "src/src_semantic_mapping_v1.ipynb" },
         { "@id": "src/src_mapping_units_of_measurement_v1.ipynb" },
+
         { "@id": "models/model_randomforest_v1.pkl" },
         { "@id": "models/model_randomforest_api_v1.pkl" },
+
         { "@id": "models/fair4ml-randomforest-v1.json" },
+        { "@id": "models/fair4ml-randomforest_api_v1.json" },
+        { "@id": "models/fair4ml-logistic-regression-api-v1.json" },
+        { "@id": "models/fair4ml-decision-tree-api-v1.json" },
+
         { "@id": "outputs/outp_confusion_matrix_v1.png" },
         { "@id": "outputs/outp_confusion_matrix_api_v1.png" },
         { "@id": "outputs/outp_model_comparison_v1.png" },
         { "@id": "outputs/outp_model_comparison_api_v1.png" },
         { "@id": "outputs/outp_pm25_histogram_v1.png" },
         { "@id": "outputs/outp_pm25_histogram_api_v1.png" },
+
         { "@id": "croissant.json" },
+        { "@id": "codemeta.json" },
+        { "@id": "CITATION.cff" },
+
         { "@id": "docs/model-card.md" },
+        { "@id": "docs/standards-overlap-analysis.md" },
+        { "@id": "docs/validation/ro-crate-validation.txt" },
+
         { "@id": "README.md" },
-        {
-  "@id": "docs/standards-overlap-analysis.md"
-},
         { "@id": "requirements.txt" },
         { "@id": "LICENSE" }
       ]
     },
-    
+
     {
       "@id": "LICENSE",
       "@type": "CreativeWork",
       "name": "MIT License for project software"
     },
+
     {
       "@id": "https://creativecommons.org/licenses/by/4.0/",
       "@type": "CreativeWork",
       "name": "Creative Commons Attribution 4.0 International"
     },
+
     {
       "@id": "README.md",
       "@type": "CreativeWork",
       "name": "Project README"
     },
+
     {
       "@id": "requirements.txt",
       "@type": "File",
       "name": "Python dependency requirements",
       "encodingFormat": "text/plain"
     },
+
+    {
+      "@id": "codemeta.json",
+      "@type": "File",
+      "name": "CodeMeta software metadata",
+      "encodingFormat": "application/json"
+    },
+
+    {
+      "@id": "CITATION.cff",
+      "@type": "File",
+      "name": "Citation metadata file",
+      "encodingFormat": "text/plain"
+    },
+
+    {
+      "@id": "docs/validation/ro-crate-validation.txt",
+      "@type": "File",
+      "name": "RO-Crate validation report",
+      "encodingFormat": "text/plain"
+    },
+
     {
       "@id": "data/inp_air_quality_raw_v1.csv",
       "@type": "File",
@@ -80,6 +127,7 @@
       "encodingFormat": "text/csv",
       "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" }
     },
+
     {
       "@id": "data/inp_air_quality_processed_v1.csv",
       "@type": "File",
@@ -88,6 +136,7 @@
       "isBasedOn": { "@id": "data/inp_air_quality_raw_v1.csv" },
       "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" }
     },
+
     {
       "@id": "docs/schema.sql",
       "@type": "File",
@@ -95,6 +144,7 @@
       "encodingFormat": "text/sql",
       "license": { "@id": "LICENSE" }
     },
+
     {
       "@id": "docs/views.sql",
       "@type": "File",
@@ -102,6 +152,7 @@
       "encodingFormat": "text/sql",
       "license": { "@id": "LICENSE" }
     },
+
     {
       "@id": "docs/er_diagram_air_quality_v1.png",
       "@type": "File",
@@ -109,179 +160,117 @@
       "encodingFormat": "image/png",
       "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" }
     },
+
     {
       "@id": "src/src_air_quality_experiment.ipynb",
       "@type": "SoftwareSourceCode",
       "name": "Local air quality experiment notebook",
       "programmingLanguage": "Python",
       "encodingFormat": "application/x-ipynb+json",
-      "license": { "@id": "LICENSE" },
-      "input": [{ "@id": "data/inp_air_quality_processed_v1.csv" }],
-      "output": [
-        { "@id": "models/model_randomforest_v1.pkl" },
-        { "@id": "outputs/outp_confusion_matrix_v1.png" },
-        { "@id": "outputs/outp_model_comparison_v1.png" },
-        { "@id": "outputs/outp_pm25_histogram_v1.png" }
-      ]
+      "license": { "@id": "LICENSE" }
     },
+
     {
       "@id": "src/src_air_quality_api_experiment_v1.ipynb",
       "@type": "SoftwareSourceCode",
       "name": "DBRepo API-based air quality experiment notebook",
       "programmingLanguage": "Python",
       "encodingFormat": "application/x-ipynb+json",
-      "license": { "@id": "LICENSE" },
-      "input": [{ "@id": "docs/views.sql" }],
-      "output": [
-        { "@id": "models/model_randomforest_api_v1.pkl" },
-        { "@id": "outputs/outp_confusion_matrix_api_v1.png" },
-        { "@id": "outputs/outp_model_comparison_api_v1.png" },
-        { "@id": "outputs/outp_pm25_histogram_api_v1.png" }
-      ]
-    },
-    {
-      "@id": "src/src_dbrepo_setup_v1.ipynb",
-      "@type": "SoftwareSourceCode",
-      "name": "DBRepo setup notebook",
-      "programmingLanguage": "Python",
-      "encodingFormat": "application/x-ipynb+json",
       "license": { "@id": "LICENSE" }
     },
-    {
-      "@id": "src/src_dbrepo_load_v1.ipynb",
-      "@type": "SoftwareSourceCode",
-      "name": "DBRepo data loading notebook",
-      "programmingLanguage": "Python",
-      "encodingFormat": "application/x-ipynb+json",
-      "license": { "@id": "LICENSE" }
-    },
-    {
-      "@id": "src/src_dbrepo_views_v1.ipynb",
-      "@type": "SoftwareSourceCode",
-      "name": "DBRepo views notebook",
-      "programmingLanguage": "Python",
-      "encodingFormat": "application/x-ipynb+json",
-      "license": { "@id": "LICENSE" }
-    },
-    {
-      "@id": "src/src_semantic_mapping_v1.ipynb",
-      "@type": "SoftwareSourceCode",
-      "name": "Semantic ontology mapping notebook",
-      "programmingLanguage": "Python",
-      "encodingFormat": "application/x-ipynb+json",
-      "license": { "@id": "LICENSE" }
-    },
-    {
-      "@id": "src/src_mapping_units_of_measurement_v1.ipynb",
-      "@type": "SoftwareSourceCode",
-      "name": "Units of measurement mapping notebook",
-      "programmingLanguage": "Python",
-      "encodingFormat": "application/x-ipynb+json",
-      "license": { "@id": "LICENSE" }
-    },
+
     {
       "@id": "models/model_randomforest_v1.pkl",
-      "identifier": "https://doi.org/10.70124/gv54r-hph13",
       "@type": "File",
+      "identifier": "https://doi.org/10.70124/gv54r-hph13",
       "name": "Random Forest trained model from local workflow",
       "encodingFormat": "application/octet-stream",
       "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" }
     },
+
     {
       "@id": "models/model_randomforest_api_v1.pkl",
-      "identifier": "https://doi.org/10.70124/gv54r-hph13",
       "@type": "File",
+      "identifier": "https://doi.org/10.70124/gv54r-hph13",
       "name": "Random Forest trained model from API workflow",
       "encodingFormat": "application/octet-stream",
       "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" }
     },
+
     {
       "@id": "models/fair4ml-randomforest-v1.json",
       "@type": "File",
       "name": "FAIR4ML metadata for Random Forest air quality model",
       "encodingFormat": "application/json",
-      "about": { "@id": "models/model_randomforest_api_v1.pkl" },
       "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" }
     },
+
     {
-      "@id": "outputs/outp_confusion_matrix_v1.png",
+      "@id": "models/fair4ml-randomforest_api_v1.json",
       "@type": "File",
-      "name": "Confusion matrix from local workflow",
-      "encodingFormat": "image/png",
+      "name": "FAIR4ML metadata for Random Forest API air quality model",
+      "encodingFormat": "application/json",
       "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" }
     },
+
     {
-      "@id": "outputs/outp_confusion_matrix_api_v1.png",
+      "@id": "models/fair4ml-logistic-regression-api-v1.json",
       "@type": "File",
-      "name": "Confusion matrix from API workflow",
-      "encodingFormat": "image/png",
+      "name": "FAIR4ML metadata for Logistic Regression air quality model",
+      "encodingFormat": "application/json",
       "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" }
     },
+
     {
-      "@id": "outputs/outp_model_comparison_v1.png",
+      "@id": "models/fair4ml-decision-tree-api-v1.json",
       "@type": "File",
-      "name": "Model comparison visualization from local workflow",
-      "encodingFormat": "image/png",
+      "name": "FAIR4ML metadata for Decision Tree air quality model",
+      "encodingFormat": "application/json",
       "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" }
     },
-    {
-      "@id": "outputs/outp_model_comparison_api_v1.png",
-      "@type": "File",
-      "name": "Model comparison visualization from API workflow",
-      "encodingFormat": "image/png",
-      "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" }
-    },
-    {
-      "@id": "outputs/outp_pm25_histogram_v1.png",
-      "@type": "File",
-      "name": "PM2.5 histogram from local workflow",
-      "encodingFormat": "image/png",
-      "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" }
-    },
-    {
-      "@id": "outputs/outp_pm25_histogram_api_v1.png",
-      "@type": "File",
-      "name": "PM2.5 histogram from API workflow",
-      "encodingFormat": "image/png",
-      "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" }
-    },
-    {
-  "@id": "docs/standards-overlap-analysis.md",
-  "@type": "CreativeWork",
-  "name": "Metadata standards overlap and complementarity analysis"
-},
+
     {
       "@id": "croissant.json",
       "@type": "File",
       "name": "Croissant metadata record for air quality dataset",
       "encodingFormat": "application/ld+json",
-      "about": { "@id": "data/inp_air_quality_processed_v1.csv" },
       "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" }
     },
+
     {
       "@id": "docs/model-card.md",
       "@type": "CreativeWork",
-      "name": "Model Card for Random Forest air quality prediction model",
+      "name": "Model Card for Air Quality Prediction Models",
       "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" }
     },
+
+    {
+      "@id": "docs/standards-overlap-analysis.md",
+      "@type": "CreativeWork",
+      "name": "Metadata standards overlap and complementarity analysis"
+    },
+
     {
       "@id": "#author-a",
       "@type": "Person",
       "name": "Sneha Chattopadhyay",
       "identifier": "https://orcid.org/0009-0000-1849-5804"
     },
+
     {
       "@id": "#author-b",
       "@type": "Person",
       "name": "Anukriti Sharma",
       "identifier": "https://orcid.org/0009-0001-2969-8567"
     },
+
     {
       "@id": "#author-c",
       "@type": "Person",
       "name": "Yash Lucas",
       "identifier": "https://orcid.org/0009-0000-3575-9517"
     },
+
     {
       "@id": "#author-d",
       "@type": "Person",
